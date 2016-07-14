@@ -9,6 +9,7 @@ Router.route('/', function () {
         
 
 Router.route('/wallboard', function () {
+// Router.route('/wallboard/:queue', function () {
   this.render('wallboard');
 });
 

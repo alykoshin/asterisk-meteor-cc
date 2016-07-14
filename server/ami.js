@@ -210,9 +210,11 @@ Meteor.startAMI = function() {
   // Listen for any/all AMI events.
   ami.on('managerevent', function(evt) {
     var msg = evt.event;
-    // if (evt.event !== 'RTCPReceived' && evt.event !== 'RTCPSent') {
-    msg += chalk.grey(': '+JSON.stringify(evt));
-    // }
+    if (evt.event !== 'RTCPReceived' && evt.event !== 'RTCPSent') {
+      msg += chalk.grey(': '+JSON.stringify(evt) );
+    } else {
+      msg += chalk.grey(': '+' { ... }');
+    }
     dispatcher.publish('ami', evt);
 
     debug('<-- '+'managerevent: ' + msg);
@@ -271,6 +273,11 @@ Meteor.startAMI = function() {
   });
 
   ami.wrappedOn('queuememberremoved', function(evt) {
+    Queuememberstatus.remove({ queue: evt.queue, stateinterface: evt.stateinterface });
+    delayedRefreshQueues();
+  });
+
+   ami.wrappedOn('agentcomplete', function(evt) {
     Queuememberstatus.remove({ queue: evt.queue, stateinterface: evt.stateinterface });
     delayedRefreshQueues();
   });
