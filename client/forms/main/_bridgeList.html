@@ -1,0 +1,40 @@
+<template name="bridgeList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>bridgeList</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>bridgeuniqueid</th>
+        <th>bridgetype</th>
+        <th>bridgetechnology</th>
+        <th>bridgecreator</th>
+        <th>bridgename</th>
+        <th>bridgenumchannels</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each bridge}}
+        <tr class="channel {{bridgeClass status paused}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{bridgeuniqueid}}</td>
+          <td>{{bridgetype}}</td>
+          <td>{{bridgetechnology}}</td>
+          <td>{{bridgecreator}}</td>
+          <td>{{bridgename}}</td>
+          <td>{{bridgenumchannels}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+

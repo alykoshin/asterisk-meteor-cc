@@ -1,0 +1,13 @@
+{
+  "name": "asterisk-meteor-cc",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "asterisk-manager": "^0.1.15",
+    "chalk": "^1.1.3",
+    "debug": "^2.2.0",
+    "meteor-node-stubs": "~0.2.0"
+  }
+}

@@ -1,0 +1,37 @@
+<template name="extensionStatusList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>Extension Status</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>exten</th>
+        <th>context</th>
+        <th>hint</th>
+        <th>status</th>
+        <th>statustext</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each extensionstatus}}
+        <tr class="{{extensionstatusClass statustext}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{exten}}</td>
+          <td>{{context}}</td>
+          <td>{{hint}}</td>
+          <td>{{status}}</td>
+          <td>{{statustext}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+

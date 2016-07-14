@@ -1,0 +1,57 @@
+<template name="channelList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>channelList</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>channel</th>
+        <th>channelstate</th>
+        <th>channelstatedesc</th>
+        <th>calleridnum</th>
+        <th>calleridname</th>
+        <th>connectedlinenum</th>
+        <th>connectedlinename</th>
+        <th>accountcode</th>
+        <th>context</th>
+        <th>exten</th>
+        <th>priority</th>
+        <th>uniqueid</th>
+        <th>extension</th>
+        <th>application</th>
+        <th>appdata</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each _channel}}
+        <tr class="channel {{channelClass status paused}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{channel}}</td>
+          <td>{{channelstate}}</td>
+          <td>{{channelstatedesc}}</td>
+          <td>{{calleridnum}}</td>
+          <td>{{calleridname}}</td>
+          <td>{{connectedlinenum}}</td>
+          <td>{{connectedlinename}}</td>
+          <td>{{accountcode}}</td>
+          <td>{{context}}</td>
+          <td>{{exten}}</td>
+          <td>{{priority}}</td>
+          <td>{{uniqueid}}</td>
+          <td>{{extension}}</td>
+          <td>{{application}}</td>
+          <td>{{appdata}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

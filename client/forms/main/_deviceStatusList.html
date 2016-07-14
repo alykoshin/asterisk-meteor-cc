@@ -1,0 +1,40 @@
+<template name="deviceStatusList">
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <span>Device Status</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>device</th>
+        <th>state</th>
+        <th>actionid</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each devicestatus}}
+        <tr class="{{devicestatusClass state}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{device}}</td>
+          <td>{{state}}</td>
+          <td>{{actionid}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+
+    </table>
+
+  </div>
+
+</template>

@@ -1,0 +1,78 @@
+<template name="wbQueueInfo">
+  <div class="wallboard panel rows6">
+
+    <div class="row6">
+      <div class="cell col1">
+        <div class="full main-header">
+          {{visibleName}}
+        </div>
+      </div>
+    </div>
+    {{#with _queue queueName}}
+      <div class="row6">
+        <div class="cell col3">
+          <div class="header {{loggedinClass}}">Агентов</div>
+          <div class="data {{loggedinClass}}">{{loggedin}}</div>
+        </div><div class="cell col3">
+        <div class="header {{availableClass}}">Доступно</div>
+        <div class="data {{availableClass}}">{{available}}</div>
+      </div><div class="cell col3">
+        <div class="header {{callersClass}}">Вызовов</div>
+        <div class="data {{callersClass}}">{{callers}}</div>
+      </div>
+      </div>
+       <div class="row6">
+        <div class="cell col3">
+          <div class="header">Ср.ожидание в очереди</div>
+          <div class="data">{{holdtime}}</div>
+        </div><div class="cell col3">
+        <div class="header">Ср.длит.разговора</div>
+        <div class="data">{{talktime}}</div>
+      </div><div class="cell col3">
+        <div class="header {{longestholdtimeClass}}">Макс.ожидание сейчас</div>
+        <div class="data {{longestholdtimeClass}}">{{longestholdtime}}</div>
+      </div>
+      </div>
+<!--
+      <div class="row6">
+        <div class="cell col2">
+          <div class="header">Max</div>
+          <div class="data">{{max}}</div>
+        </div><div class="cell col2">
+        <div class="header">Вызовов</div>
+        <div class="data">{{calls}}</div>
+      </div>
+      </div>
+-->
+      <div class="row6">
+        <div class="cell col2">
+          <div class="header">Завершено</div>
+          <div class="data">{{completed}}</div>
+        </div><div class="cell col2">
+        <div class="header">Отменено</div>
+        <div class="data">{{abandoned}}</div>
+      </div>
+      </div>
+      <div class="row6">
+        <div class="cell col2">
+          <div class="header">Уровень сервиса</div>
+          <div class="data">{{servicelevel}}</div>
+        </div><div class="cell col2">
+        <div class="header">servicelevelperf</div>
+        <div class="data">{{servicelevelperf}}</div>
+      </div>
+      </div>
+    {{/with}}
+
+    <div class="row6">
+      <div class="cell col1">
+        <div class="data ">
+          Сегодня {{datetime}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+

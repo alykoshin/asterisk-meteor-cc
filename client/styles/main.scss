@@ -1,0 +1,184 @@
+.flaticon-fix:before {
+  margin-left: -1px;
+  font-size: 16px;
+  margin-right: -1px;
+  line-height: 1;
+}
+
+tr.queuememberstatus {
+  &.paused {
+    color: #a94442;
+  }
+}
+
+.statusbar {
+  position:fixed;
+  z-index: 100;
+  left:0px;
+  bottom:0px;
+  //height:30px;
+  width:100%;
+  //background:#999;
+  .statustext {
+
+  }
+}
+
+/* IE 6 */
+* html .statusbar {
+  position:absolute;
+  top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+
+
+$cell-back-blue: hsla(209deg, 67%, 69%, 0.5);
+$cell-hdr-back-blue: darken($cell-back-blue, 30%);
+$cell-brd-blue: darken($cell-back-blue, 30%);
+
+$cell-back-green: hsla(152deg, 67%, 69%, 0.5);
+$cell-hdr-back-green: darken($cell-back-green, 30%);
+$cell-brd-green: darken($cell-back-green, 30%);
+
+$cell-back-yellow: hsla(64deg, 67%, 69%, 0.5);
+$cell-hdr-back-yellow: darken($cell-back-yellow, 30%);
+$cell-brd-yellow: darken($cell-back-yellow, 30%);
+
+$cell-back-red: hsla(0deg, 67%, 69%, 0.5);
+$cell-hdr-back-red: darken($cell-back-red, 30%);
+$cell-brd-red: darken($cell-back-red, 30%);
+
+.wallboard.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 25px;
+
+  .cell {
+    height: 100%;
+    padding: 10px 32px;
+  }
+
+  .col {
+    //position: relative;
+    display: inline-block;
+
+    #subcell {
+      width: 100%;
+      text-align: center;
+      border-radius: 3px;
+      margin: 3px;
+      //font-size: 42px;
+      font-size: 24px;
+      border: 1px solid $cell-brd-blue;
+      &.green {
+        border: 1px solid $cell-brd-green;
+      }
+      &.yellow {
+        border: 1px solid $cell-brd-yellow;
+      }
+      &.red {
+        border: 1px solid $cell-brd-red;
+      }
+    }
+    .header {
+      @extend #subcell;
+      height: 33%;
+      //font-size: 32px;
+      font-size: 24px;
+      background-color: $cell-hdr-back-blue;
+      &.green {
+        background-color: $cell-hdr-back-green;
+      }
+      &.yellow {
+        background-color: $cell-hdr-back-yellow;
+      }
+      &.red {
+        background-color: $cell-hdr-back-red;
+      }
+    }
+    .data {
+      @extend #subcell;
+      height: 66%;
+      //font-size: 56px;
+      font-size: 32px;
+      background-color: $cell-back-blue;
+      &.green {
+        background-color: $cell-back-green;
+      }
+      &.yellow {
+        background-color: $cell-back-yellow;
+      }
+      &.red {
+        background-color: $cell-back-red;
+      }
+    }
+    .full {
+      @extend #subcell;
+      height: 100%;
+      background-color: $cell-hdr-back-blue;
+    }
+    .main-header {
+      font-size: 56px;
+    }
+  }
+
+  .col1 {
+    @extend .col;
+    width: 99%;
+  }
+
+  .col2 {
+    @extend .col;
+    width: 50%;
+    &:last-child {
+      width: 49%;
+    }
+  }
+
+  .col3 {
+    @extend .col;
+    width: 33%;
+  }
+
+  .col4 {
+    @extend .col;
+    width: 25%;
+    &:last-child {
+      width: 24%;
+    }
+  }
+
+  //.row {
+  //}
+
+  .row1 {
+    //@extend .row;
+    height: 100%;
+  }
+
+  .row2 {
+    //@extend .row;
+    height: 50%;
+  }
+
+  .row3 {
+    //@extend .row;
+    height: 33%;
+  }
+
+  .row4 {
+    //@extend .row;
+    height: 25%;
+  }
+
+  .row5 {
+    //@extend .row;
+    height: 20%;
+  }
+
+  .row6 {
+    //@extend .row;
+    height: 16%;
+  }
+}

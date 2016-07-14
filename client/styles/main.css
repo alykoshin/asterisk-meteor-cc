@@ -1,0 +1,96 @@
+.flaticon-fix:before {
+  margin-left: -1px;
+  font-size: 16px;
+  margin-right: -1px;
+  line-height: 1; }
+
+tr.queuememberstatus.paused {
+  color: #a94442; }
+
+.statusbar {
+  position: fixed;
+  z-index: 100;
+  left: 0px;
+  bottom: 0px;
+  width: 100%; }
+
+/* IE 6 */
+* html .statusbar {
+  position: absolute;
+  top: expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px'); }
+
+.wallboard.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 25px; }
+  .wallboard.panel .cell {
+    height: 100%;
+    padding: 10px 32px; }
+  .wallboard.panel .col, .wallboard.panel .col1, .wallboard.panel .col2, .wallboard.panel .col3, .wallboard.panel .col4 {
+    display: inline-block; }
+    .wallboard.panel .col #subcell, .wallboard.panel .col1 #subcell, .wallboard.panel .col2 #subcell, .wallboard.panel .col3 #subcell, .wallboard.panel .col4 #subcell, .wallboard.panel .col .header, .wallboard.panel .col .col1 .header, .wallboard.panel .col1 .col .header, .wallboard.panel .col1 .header, .wallboard.panel .col .col2 .header, .wallboard.panel .col2 .col .header, .wallboard.panel .col2 .header, .wallboard.panel .col .col3 .header, .wallboard.panel .col3 .col .header, .wallboard.panel .col3 .header, .wallboard.panel .col .col4 .header, .wallboard.panel .col4 .col .header, .wallboard.panel .col4 .header, .wallboard.panel .col .data, .wallboard.panel .col .col1 .data, .wallboard.panel .col1 .col .data, .wallboard.panel .col1 .data, .wallboard.panel .col .col2 .data, .wallboard.panel .col2 .col .data, .wallboard.panel .col2 .data, .wallboard.panel .col .col3 .data, .wallboard.panel .col3 .col .data, .wallboard.panel .col3 .data, .wallboard.panel .col .col4 .data, .wallboard.panel .col4 .col .data, .wallboard.panel .col4 .data, .wallboard.panel .col .full, .wallboard.panel .col .col1 .full, .wallboard.panel .col1 .col .full, .wallboard.panel .col1 .full, .wallboard.panel .col .col2 .full, .wallboard.panel .col2 .col .full, .wallboard.panel .col2 .full, .wallboard.panel .col .col3 .full, .wallboard.panel .col3 .col .full, .wallboard.panel .col3 .full, .wallboard.panel .col .col4 .full, .wallboard.panel .col4 .col .full, .wallboard.panel .col4 .full {
+      width: 100%;
+      text-align: center;
+      border-radius: 3px;
+      margin: 3px;
+      font-size: 24px;
+      border: 1px solid rgba(33, 102, 166, 0.5); }
+      .wallboard.panel .col #subcell.green, .wallboard.panel .col1 #subcell.green, .wallboard.panel .col2 #subcell.green, .wallboard.panel .col3 #subcell.green, .wallboard.panel .col4 #subcell.green, .wallboard.panel .col .green.header, .wallboard.panel .col .col1 .green.header, .wallboard.panel .col1 .col .green.header, .wallboard.panel .col1 .green.header, .wallboard.panel .col .col2 .green.header, .wallboard.panel .col2 .col .green.header, .wallboard.panel .col2 .green.header, .wallboard.panel .col .col3 .green.header, .wallboard.panel .col3 .col .green.header, .wallboard.panel .col3 .green.header, .wallboard.panel .col .col4 .green.header, .wallboard.panel .col4 .col .green.header, .wallboard.panel .col4 .green.header, .wallboard.panel .col .green.data, .wallboard.panel .col .col1 .green.data, .wallboard.panel .col1 .col .green.data, .wallboard.panel .col1 .green.data, .wallboard.panel .col .col2 .green.data, .wallboard.panel .col2 .col .green.data, .wallboard.panel .col2 .green.data, .wallboard.panel .col .col3 .green.data, .wallboard.panel .col3 .col .green.data, .wallboard.panel .col3 .green.data, .wallboard.panel .col .col4 .green.data, .wallboard.panel .col4 .col .green.data, .wallboard.panel .col4 .green.data, .wallboard.panel .col .green.full, .wallboard.panel .col .col1 .green.full, .wallboard.panel .col1 .col .green.full, .wallboard.panel .col1 .green.full, .wallboard.panel .col .col2 .green.full, .wallboard.panel .col2 .col .green.full, .wallboard.panel .col2 .green.full, .wallboard.panel .col .col3 .green.full, .wallboard.panel .col3 .col .green.full, .wallboard.panel .col3 .green.full, .wallboard.panel .col .col4 .green.full, .wallboard.panel .col4 .col .green.full, .wallboard.panel .col4 .green.full {
+        border: 1px solid rgba(33, 166, 104, 0.5); }
+      .wallboard.panel .col #subcell.yellow, .wallboard.panel .col1 #subcell.yellow, .wallboard.panel .col2 #subcell.yellow, .wallboard.panel .col3 #subcell.yellow, .wallboard.panel .col4 #subcell.yellow, .wallboard.panel .col .yellow.header, .wallboard.panel .col .col1 .yellow.header, .wallboard.panel .col1 .col .yellow.header, .wallboard.panel .col1 .yellow.header, .wallboard.panel .col .col2 .yellow.header, .wallboard.panel .col2 .col .yellow.header, .wallboard.panel .col2 .yellow.header, .wallboard.panel .col .col3 .yellow.header, .wallboard.panel .col3 .col .yellow.header, .wallboard.panel .col3 .yellow.header, .wallboard.panel .col .col4 .yellow.header, .wallboard.panel .col4 .col .yellow.header, .wallboard.panel .col4 .yellow.header, .wallboard.panel .col .yellow.data, .wallboard.panel .col .col1 .yellow.data, .wallboard.panel .col1 .col .yellow.data, .wallboard.panel .col1 .yellow.data, .wallboard.panel .col .col2 .yellow.data, .wallboard.panel .col2 .col .yellow.data, .wallboard.panel .col2 .yellow.data, .wallboard.panel .col .col3 .yellow.data, .wallboard.panel .col3 .col .yellow.data, .wallboard.panel .col3 .yellow.data, .wallboard.panel .col .col4 .yellow.data, .wallboard.panel .col4 .col .yellow.data, .wallboard.panel .col4 .yellow.data, .wallboard.panel .col .yellow.full, .wallboard.panel .col .col1 .yellow.full, .wallboard.panel .col1 .col .yellow.full, .wallboard.panel .col1 .yellow.full, .wallboard.panel .col .col2 .yellow.full, .wallboard.panel .col2 .col .yellow.full, .wallboard.panel .col2 .yellow.full, .wallboard.panel .col .col3 .yellow.full, .wallboard.panel .col3 .col .yellow.full, .wallboard.panel .col3 .yellow.full, .wallboard.panel .col .col4 .yellow.full, .wallboard.panel .col4 .col .yellow.full, .wallboard.panel .col4 .yellow.full {
+        border: 1px solid rgba(157, 166, 33, 0.5); }
+      .wallboard.panel .col #subcell.red, .wallboard.panel .col1 #subcell.red, .wallboard.panel .col2 #subcell.red, .wallboard.panel .col3 #subcell.red, .wallboard.panel .col4 #subcell.red, .wallboard.panel .col .red.header, .wallboard.panel .col .col1 .red.header, .wallboard.panel .col1 .col .red.header, .wallboard.panel .col1 .red.header, .wallboard.panel .col .col2 .red.header, .wallboard.panel .col2 .col .red.header, .wallboard.panel .col2 .red.header, .wallboard.panel .col .col3 .red.header, .wallboard.panel .col3 .col .red.header, .wallboard.panel .col3 .red.header, .wallboard.panel .col .col4 .red.header, .wallboard.panel .col4 .col .red.header, .wallboard.panel .col4 .red.header, .wallboard.panel .col .red.data, .wallboard.panel .col .col1 .red.data, .wallboard.panel .col1 .col .red.data, .wallboard.panel .col1 .red.data, .wallboard.panel .col .col2 .red.data, .wallboard.panel .col2 .col .red.data, .wallboard.panel .col2 .red.data, .wallboard.panel .col .col3 .red.data, .wallboard.panel .col3 .col .red.data, .wallboard.panel .col3 .red.data, .wallboard.panel .col .col4 .red.data, .wallboard.panel .col4 .col .red.data, .wallboard.panel .col4 .red.data, .wallboard.panel .col .red.full, .wallboard.panel .col .col1 .red.full, .wallboard.panel .col1 .col .red.full, .wallboard.panel .col1 .red.full, .wallboard.panel .col .col2 .red.full, .wallboard.panel .col2 .col .red.full, .wallboard.panel .col2 .red.full, .wallboard.panel .col .col3 .red.full, .wallboard.panel .col3 .col .red.full, .wallboard.panel .col3 .red.full, .wallboard.panel .col .col4 .red.full, .wallboard.panel .col4 .col .red.full, .wallboard.panel .col4 .red.full {
+        border: 1px solid rgba(166, 33, 33, 0.5); }
+    .wallboard.panel .col .header, .wallboard.panel .col1 .header, .wallboard.panel .col2 .header, .wallboard.panel .col3 .header, .wallboard.panel .col4 .header {
+      height: 33%;
+      font-size: 24px;
+      background-color: rgba(33, 102, 166, 0.5); }
+      .wallboard.panel .col .header.green, .wallboard.panel .col1 .header.green, .wallboard.panel .col2 .header.green, .wallboard.panel .col3 .header.green, .wallboard.panel .col4 .header.green {
+        background-color: rgba(33, 166, 104, 0.5); }
+      .wallboard.panel .col .header.yellow, .wallboard.panel .col1 .header.yellow, .wallboard.panel .col2 .header.yellow, .wallboard.panel .col3 .header.yellow, .wallboard.panel .col4 .header.yellow {
+        background-color: rgba(157, 166, 33, 0.5); }
+      .wallboard.panel .col .header.red, .wallboard.panel .col1 .header.red, .wallboard.panel .col2 .header.red, .wallboard.panel .col3 .header.red, .wallboard.panel .col4 .header.red {
+        background-color: rgba(166, 33, 33, 0.5); }
+    .wallboard.panel .col .data, .wallboard.panel .col1 .data, .wallboard.panel .col2 .data, .wallboard.panel .col3 .data, .wallboard.panel .col4 .data {
+      height: 66%;
+      font-size: 32px;
+      background-color: rgba(123, 178, 229, 0.5); }
+      .wallboard.panel .col .data.green, .wallboard.panel .col1 .data.green, .wallboard.panel .col2 .data.green, .wallboard.panel .col3 .data.green, .wallboard.panel .col4 .data.green {
+        background-color: rgba(123, 229, 179, 0.5); }
+      .wallboard.panel .col .data.yellow, .wallboard.panel .col1 .data.yellow, .wallboard.panel .col2 .data.yellow, .wallboard.panel .col3 .data.yellow, .wallboard.panel .col4 .data.yellow {
+        background-color: rgba(222, 229, 123, 0.5); }
+      .wallboard.panel .col .data.red, .wallboard.panel .col1 .data.red, .wallboard.panel .col2 .data.red, .wallboard.panel .col3 .data.red, .wallboard.panel .col4 .data.red {
+        background-color: rgba(229, 123, 123, 0.5); }
+    .wallboard.panel .col .full, .wallboard.panel .col1 .full, .wallboard.panel .col2 .full, .wallboard.panel .col3 .full, .wallboard.panel .col4 .full {
+      height: 100%;
+      background-color: rgba(33, 102, 166, 0.5); }
+    .wallboard.panel .col .main-header, .wallboard.panel .col1 .main-header, .wallboard.panel .col2 .main-header, .wallboard.panel .col3 .main-header, .wallboard.panel .col4 .main-header {
+      font-size: 56px; }
+  .wallboard.panel .col1 {
+    width: 99%; }
+  .wallboard.panel .col2 {
+    width: 50%; }
+    .wallboard.panel .col2:last-child {
+      width: 49%; }
+  .wallboard.panel .col3 {
+    width: 33%; }
+  .wallboard.panel .col4 {
+    width: 25%; }
+    .wallboard.panel .col4:last-child {
+      width: 24%; }
+  .wallboard.panel .row1 {
+    height: 100%; }
+  .wallboard.panel .row2 {
+    height: 50%; }
+  .wallboard.panel .row3 {
+    height: 33%; }
+  .wallboard.panel .row4 {
+    height: 25%; }
+  .wallboard.panel .row5 {
+    height: 20%; }
+  .wallboard.panel .row6 {
+    height: 16%; }
+
+/*# sourceMappingURL=main.css.map */

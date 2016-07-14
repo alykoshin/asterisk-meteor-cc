@@ -1,0 +1,50 @@
+<template name="channelVarList">
+  <div class="panel panel-default">
+    <div class="panel-heading">channelVarList</div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>channel</th>
+        <th>channelstate</th>
+        <th>channelstatedesc</th>
+        <th>calleridnum</th>
+        <th>calleridname</th>
+        <th>connectedlinenum</th>
+        <th>connectedlinename</th>
+        <th>accountcode</th>
+        <th>context</th>
+        <th>exten</th>
+        <th>priority</th>
+        <th>uniqueid</th>
+        <th>variable</th>
+        <th>value</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each _channelvar}}
+        <tr class="channel {{channelvarClass status paused}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{channel}}</td>
+          <td>{{channelstate}}</td>
+          <td>{{channelstatedesc}}</td>
+          <td>{{calleridnum}}</td>
+          <td>{{calleridname}}</td>
+          <td>{{connectedlinenum}}</td>
+          <td>{{connectedlinename}}</td>
+          <td>{{accountcode}}</td>
+          <td>{{context}}</td>
+          <td>{{exten}}</td>
+          <td>{{priority}}</td>
+          <td>{{uniqueid}}</td>
+          <td>{{_variable}}</td>
+          <td>{{value}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

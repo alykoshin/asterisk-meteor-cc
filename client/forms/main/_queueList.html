@@ -1,0 +1,67 @@
+<template name="queueList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>queueList</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>queue</th>
+
+        <th>loggedin</th>
+        <th>available</th>
+        <th>callers</th>
+
+        <th>max</th>
+        <th>strategy</th>
+        <th>calls</th>
+
+        <th>holdtime</th>
+        <th>talktime</th>
+        <th>longestholdtime</th>
+
+        <th>completed</th>
+        <th>abandoned</th>
+        <th>servicelevel</th>
+        <th>servicelevelperf</th>
+        <th>weight</th>
+        <th>actionId</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each _queue}}
+        <tr class="queue {{queueClass status paused}}">
+          <td>{{event}}</td>
+          <td>{{queue}}</td>
+
+          <td>{{loggedin}}</td>
+          <td>{{available}}</td>
+          <td>{{callers}}</td>
+
+          <td>{{max}}</td>
+          <td>{{strategy}}</td>
+          <td>{{calls}}</td>
+
+          <td>{{holdtime}}</td>
+          <td>{{talktime}}</td>
+          <td>{{longestholdtime}}</td>
+
+          <td>{{completed}}</td>
+          <td>{{abandoned}}</td>
+          <td>{{servicelevel}}</td>
+          <td>{{servicelevelperf}}</td>
+          <td>{{weight}}</td>
+          <td>{{actionid}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+

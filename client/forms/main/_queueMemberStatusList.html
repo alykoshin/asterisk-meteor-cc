@@ -1,0 +1,55 @@
+<template name="queueMemberStatusList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>queueMemberStatusList</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+        <th>queue</th>
+        <th>callstaken</th>
+        <th>paused</th>
+        <th>name/membername</th>
+        <th>penalty</th>
+        <th>location/interface</th>
+        <th>stateinterface</th>
+        <th>membership</th>
+        <th>ringinuse</th>
+        <th>lastcall</th>
+        <th>status</th>
+        <th>statusText</th>
+        <th>actionId</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each queuememberstatus}}
+        <tr class="queuememberstatus {{queuememberstatusClass status paused}}">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+          <td>{{queue}}</td>
+          <td>{{callstaken}}</td>
+          <td>{{paused}}</td>
+          <td>{{name}}{{membername}}</td>
+          <td>{{penalty}}</td>
+          <td>{{location}}{{interface}}</td>
+          <td>{{stateinterface}}</td>
+          <td>{{membership}}</td>
+          <td>{{ringinuse}}</td>
+          <td>{{lastcall}}</td>
+          <td>{{status}}</td>
+          <td>{{queuememberstatusText status}}</td>
+          <td>{{actionid}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+

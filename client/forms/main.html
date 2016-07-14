@@ -1,0 +1,224 @@
+<head>
+  <title>asterisk-meteor-cc</title>
+  <!--<link rel="stylesheet" type="text/css" href="/111001-phone-set-full/font/flaticon.css">-->
+</head>
+
+<body>
+
+
+</body>
+
+
+<template name="main">
+  {{> hello}}
+
+  {{> listPages}}
+
+  <div class="statusbar">
+    <span class="statustext"></span>
+  </div>
+
+</template>
+
+
+
+<template name="hello">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <form class="form-inline">
+        <div class="form-group">
+
+          <button type="button" class="btn btn-default wrtc-control" data-controlgroup="connect">
+            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="btn btn-default wrtc-control" data-controlgroup="originate">
+            <span class="flaticon-fix flaticon-telephone-auricular-with-nine-circular-buttons" aria-hidden="true"></span>
+          </button>
+          {{#if showControl "originate"}}
+            <input type="text" class="form-control wrtc-input" id="editOriginate" data-controlgroup="originate" placeholder="Enter number to call">
+          {{/if}}
+
+        </div>
+      </form>
+
+      <hr>
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="editMember">Member</label>
+          <input type="text" class="form-control" id="editMember" value="test_agent">
+          <label class="sr-only" for="editPhone">Phone</label>
+          <input type="text" class="form-control" id="editPhone" value="200">
+          <label class="sr-only" for="editPhone2">Phone2</label>
+          <input type="text" class="form-control" id="editPhone2" value="202">
+          <label class="sr-only" for="editQueue">Queue</label>
+          <input type="text" class="form-control" id="editQueue" value="support">
+        </div>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group">
+
+          <div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-default" id="btnSubscribe" disabled="true">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Subscribe
+            </button>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="presencestate">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              PresenceState
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="sippeerstatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              SIPpeerstatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions-no" id="btnActionExtensionState" data-action="extensionstate">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              ExtensionState
+            </button>
+            <span>ExtensionState: <span class="label label-default" id="spanExtensionState" value="">Unknown</span></span>
+            <span>DeviceState: <span class="label label-default" id="spanDeviceState" value="">Unknown</span></span>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnActionCoreStatus" data-action="corestatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              CoreStatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queuestatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              QueueStatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queuememberstatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              QueueStatus(Member)
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queues">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Queues
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="playdtmf">
+              <span class="glyphicon glyphicon glyphicon-music" aria-hidden="true"></span>
+              PlayDTMF
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="bridgelist">
+              <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span>
+              BridgeList
+            </button>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueAdd" data-action="queueadd">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+              QueueAdd
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueRemove" data-action="queueremove">
+              <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+              QueueRemove
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueuePause" data-action="queuepause">
+              <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+              QueuePause
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueStatus" data-action="queuestatus">
+              <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+              QueueStatus
+            </button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <div class = "form-group">
+            <label for = "textareaSend">Text Area</label>
+
+          <textarea class = "form-control" rows = "7" id="textareaSend" style="width:300px;">
+{}
+          </textarea>
+          </div>
+          <div>
+            <div>
+              <button type="button" class="btn btn-default" id="btnPrevPage">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnNextPage">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnAddPage">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnRemovePage">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              </button>
+            </div>
+            <button type="button" class="btn btn-default" id="btnSend">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Send
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+</template>
+
+
+<template name="listPages">
+<div class="table-responsive" style="position:relative; left:10%; width:85%; min-width:670px;">
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="{{pageClass 'deviceStatusList'}}"><a href="#" class="listPage" data-page="deviceStatusList">deviceStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'extensionStatusList'}}"><a href="#" class="listPage" data-page="extensionStatusList">extensionStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'peerStatusList'}}"><a href="#" class="listPage" data-page="peerStatusList">peerStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'queueList'}}"><a href="#" class="listPage" data-page="queueList">queueList</a></li>
+    <li role="presentation" class="{{pageClass 'queueMemberStatusList'}}"><a href="#" class="listPage" data-page="queueMemberStatusList">queueMemberStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'channelList'}}"><a href="#" class="listPage" data-page="channelList">channelList</a></li>
+    <li role="presentation" class="{{pageClass 'bridgeList'}}"><a href="#" class="listPage" data-page="bridgeList">bridgeList</a></li>
+     <li role="presentation" class="{{pageClass 'bridgechannelList'}}"><a href="#" class="listPage" data-page="bridgechannelList">bridgechannelList</a></li>
+     <li role="presentation" class="{{pageClass 'channelVarList'}}"><a href="#" class="listPage" data-page="channelVarList">channelVarList</a></li>
+  </ul>
+
+{{#if activePage "deviceStatusList"}}
+  {{> deviceStatusList }}
+{{else}} {{#if activePage "extensionStatusList"}}
+  {{> extensionStatusList }}
+{{else}} {{#if activePage "peerStatusList"}}
+    {{> peerStatusList }}
+{{else}} {{#if activePage "queueList"}}
+  {{> queueList }}
+{{else}} {{#if activePage "queueMemberStatusList"}}
+  {{> queueMemberStatusList }}
+{{else}} {{#if activePage "channelList"}}
+  {{> channelList }}
+{{else}} {{#if activePage "bridgeList"}}
+  {{> bridgeList }}
+{{else}} {{#if activePage "bridgechannelList"}}
+  {{> bridgechannelList }}
+{{else}} {{#if activePage "channelVarList"}}
+  {{> channelVarList }}
+{{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}}
+
+</div>
+</template>
+
+
+
+
+
+
+
+
+
