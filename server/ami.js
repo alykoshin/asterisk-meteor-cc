@@ -16,6 +16,10 @@ const debug_row = require('debug')('raw');
 const chalk = require('chalk');
 const AsteriskManager = require('asterisk-manager');
 
+const amiConfig = {
+  host: '172.20.200.1',
+  port: '5038',
+}
 // var dispatcher = require('./dispatcher');
 // var credentials = require('../credentials.json');
 const credentials = {
@@ -25,7 +29,7 @@ const credentials = {
   },
   "ami": {
     "username": "hello",
-    "password": "world"
+    "password": "kfd38ne98lfd"
   }
 };
 
@@ -53,9 +57,9 @@ Meteor.startAMI = function() {
 
 // var ami = new AsteriskManager('5038','localhost','hello','world', true);
   ami = new AsteriskManager(
-    '5038',
+    amiConfig.port, //'5038',
     // '178.57.222.131',
-    'localhost',
+    amiConfig.host, //'localhost',
     credentials.ami.username,
     credentials.ami.password,
     true
