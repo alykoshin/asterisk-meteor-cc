@@ -17,9 +17,11 @@ const chalk = require('chalk');
 const AsteriskManager = require('asterisk-manager');
 
 const amiConfig = {
-  host: '172.20.200.1',
+  // host: '172.20.200.1',
+  host: 'localhost',
   port: '5038',
-}
+};
+
 // var dispatcher = require('./dispatcher');
 // var credentials = require('../credentials.json');
 const credentials = {
@@ -34,18 +36,6 @@ const credentials = {
 };
 
 
-// const EventEmitter = require('events');
-// const chalk = require('chalk');
-// const debug = console.log;//equire('debug')('dispatcher');
-// const _ = require('underscore');
-
-//
-
-
-Meteor.startup(() => {
-  Meteor.cleanup();
-  Meteor.startAMI();
-});
 
 var ami;
 
@@ -337,21 +327,25 @@ Meteor.startAMI = function() {
 
   //
 
-  ami.wrappedOn('queueparams', function(evt) {
-    var $set = {};
-    for (var name in evt) { if (evt.hasOwnProperty(name)) {
-      $set[name] = evt[name  ];
-    }}
-    Queue.upsert({ queue: evt.queue }, { $set: $set }, evt);
-  });
-
   ami.wrappedOn('queuesummary', function(evt) {
     var $set = {};
     for (var name in evt) { if (evt.hasOwnProperty(name)) {
       $set[name] = evt[name  ];
     }}
-    Queue.upsert({ queue: evt.queue }, { $set: $set }, evt);
+    Queue.upsert({ queue: evt.queue }, { $set: $set });
     // Queue.upsert({ queue: evt.queue, event: evt.event }, evt);
+  });
+
+  ami.wrappedOn('queueparams', function(evt) {
+    var $set = {};
+    for (var name in evt) { if (evt.hasOwnProperty(name)) {
+      $set[name] = evt[name  ];
+    }}
+    Queue.upsert({ queue: evt.queue }, { $set: $set });
+  });
+
+  ami.wrappedOn('queueentry', function(evt) {
+    Queueentry.upsert({ queue: evt.queue, channel: evt.channel }, evt);
   });
 
   //
@@ -560,19 +554,29 @@ Meteor.startAMI = function() {
     });
   });
 
+
   dispatcher.on('ws:queuestatus', function(data, callback) {
-    var queue = data.queue;
     var msg = {
       'action': 'QueueStatus',
-      // 'Queue':   queue
     };
-    if (queue) { msg.queue = queue; }
+    if (data && data.queue) { msg.queue = data.queue; }
+    if (data && data.member) { msg.member = data.member; }
     ami.actionComplete(msg,
       function (err, res, response, complete) {
         callback(err, res);
       }
     );
   });
+
+  dispatcher.on('ws:queuestatus-only', function(data, callback) {
+    var msg = {
+      'action': 'QueueStatus',
+      'member': 'this-member-does-not-exists',
+    };
+    if (data && data.queue) { msg.queue = data.queue; }
+    ami.actionComplete(msg, callback);
+  });
+
 
   dispatcher.on('ws:queuesummary', function(data, callback) {
     var queue = data.queue;
@@ -710,7 +714,7 @@ var refreshTimers = {};
  * @param {function} fn
  * @param {string} timerName
  * @param {number} [timeout=5000]
- * @returns {NodeJS.Timer|number|any|*}
+ * // @returns {NodeJS.Timer|number|any|*}
  */
 var _delayedRefresh = function(fn, timerName, timeout) {
   // console.log('*********** _delayedRefresh');
@@ -723,7 +727,8 @@ var _delayedRefresh = function(fn, timerName, timeout) {
 
   timeout = timeout || 5000;
   if (refreshTimers[timerName]) {
-    cleanup();
+    // cleanup();
+    return;
   }
   refreshTimers[timerName] = setTimeout(function() {
     // console.log('*********** callback');
@@ -733,16 +738,25 @@ var _delayedRefresh = function(fn, timerName, timeout) {
 
 };
 
-const QUEUES_REFRESH_TIMEOUT = 3000;
+const QUEUES_REFRESH_DELAY = 3000;
+const QUEUES_REFRESH_PERIOD = 10000;
 var delayedRefreshQueues = function() {
   _delayedRefresh(function() {
       ami.actionComplete({ 'action': 'QueueStatus' });
+      // dispatcher.emit('ws:queuestatus-only');
       ami.actionComplete({ 'action': 'QueueSummary' });
     },
     'queues',
-    QUEUES_REFRESH_TIMEOUT
+    QUEUES_REFRESH_DELAY
   );
 };
+
+var periodicRefreshQueue = function() {
+  setInterval(function() {
+    delayedRefreshQueues();
+  }, QUEUES_REFRESH_PERIOD);
+};
+
 
 var onAMIReady = function() {
   ami.actionComplete({ 'action': 'Agents' });
@@ -776,9 +790,5 @@ var onAMIReady = function() {
   ami.actionComplete({ 'action': 'Status' });
 
   delayedRefreshQueues();
-  // const QUEUE_REFRESH_INTERVAL = 5000;
-  // setInterval(function() {
-  //   ami.actionComplete({ 'action': 'QueueStatus' });
-  //   ami.actionComplete({ 'action': 'QueueSummary' });
-  // }, QUEUE_REFRESH_INTERVAL);
+  periodicRefreshQueue();
 };

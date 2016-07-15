@@ -1,0 +1,47 @@
+<template name="queueEntryList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>queueEntryList</span>
+      <button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-hover table-striped">
+<!-- {"event":"QueueEntry","queue":"common","position":"1","channel":"SIP/200-000001f1","uniqueid":"1468523058.945","calleridnum":"200","calleridname":"unknown","connectedlinenum":"unknown","connectedlinename":"unknown","wait":"747","actionid":"1468523805539"} -->
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>queue</th>
+        <th>position</th>
+        <th>channel</th>
+        <th>uniqueid</th>
+        <th>calleridnum</th>
+        <th>calleridname</th>
+        <th>connectedlinenum</th>
+        <th>connectedlinename</th>
+        <th>wait</th>
+        <th>actionid</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each queueentry}}
+        <tr>
+          <td>{{event}}</td>
+          <td>{{queue}}</td>
+          <td>{{position}}</td>
+          <td>{{channel}}</td>
+          <td>{{uniqueid}}</td>
+          <td>{{calleridnum}}</td>
+          <td>{{calleridname}}</td>
+          <td>{{connectedlinenum}}</td>
+          <td>{{connectedlinename}}</td>
+          <td>{{wait}}</td>
+          <td>{{actionid}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+

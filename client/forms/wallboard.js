@@ -10,4 +10,10 @@ import './wallboard.html';
 
 
 
+Template.wallboard.helpers({
 
+  _queue() {
+    return Queue.find({}, { sort: { queue: 1 } });
+  },
+
+});

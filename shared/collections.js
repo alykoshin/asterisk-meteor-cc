@@ -10,6 +10,7 @@ Extensionstatus   = new Mongo.Collection("extensionstatus");
 Peerstatus        = new Mongo.Collection("peerstatus");
 Queue             = new Mongo.Collection("queue");
 Queuememberstatus = new Mongo.Collection("queuememberstatus");
+Queueentry        = new Mongo.Collection("queueentry");
 Channel           = new Mongo.Collection("channel");
 Bridge            = new Mongo.Collection("bridge");
 Bridgechannel     = new Mongo.Collection("bridgechannel");
@@ -24,6 +25,7 @@ Meteor.cleanup = function() {
   Peerstatus.remove({});
   Queue.remove({});
   Queuememberstatus.remove({});
+  Queueentry.remove({});
   Channel.remove({});
   Bridge.remove({});
   Bridgechannel.remove({});

@@ -34,13 +34,30 @@ Meteor.setInterval(function() {
   Session.set('datetime', s);
 }, 1000);
 
-Template.wbQueueInfo.helpers({
+
+function humanizeDuration(input, units ) {
+  // units is a string with possible values of y, M, w, d, h, m, s, ms
+  var duration = moment().startOf('day').add(input, units);
+      var format = "";
+  if(duration.hour() > 0){ format += "H ч "; }
+  if(duration.minute() > 0){ format += "m мин "; }
+  format += "s с";
+
+  return duration.format(format);
+}
+
+
+Template.queueInfo.helpers({
 
   _queue(name) {
     // console.log( name );
     // console.log(Queue.findOne({ queue: name }));
     return Queue.findOne({ queue: name });
   },
+
+  humanizeDuration(value) {
+    return humanizeDuration(value,'s');
+   },
 
   loggedinClass() {
     var val; try { val = parseInt(this.loggedin); } catch(e) { val = 0; }
