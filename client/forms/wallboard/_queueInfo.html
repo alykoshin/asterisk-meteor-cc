@@ -14,28 +14,14 @@
     </div>
     {{#with _queue queueName}}
       <div class="row6">
-        <div class="cell col3">
-          <div class="header {{loggedinClass}}">Агентов всего</div>
-          <div class="data {{loggedinClass}}">{{loggedin}}</div>
-        </div><div class="cell col3">
-        <div class="header {{availableClass}}">Агентов свободно</div>
-        <div class="data {{availableClass}}">{{available}}</div>
-      </div><div class="cell col3">
-        <div class="header {{callersClass}}">Вызовов в очереди</div>
-        <div class="data {{callersClass}}">{{callers}}</div>
-      </div>
+        {{> wb_block value=loggedin visibleName="Агентов всего" class=loggedinClass cols=3 }}
+        {{> wb_block value=available visibleName="Агентов свободно" class=availableClass cols=3 }}
+        {{> wb_block value=callers visibleName="Вызовов в очереди" class=callersClass cols=3 }}
       </div>
       <div class="row6">
-        <div class="cell col3">
-          <div class="header">Ср.ожидание в очереди</div>
-          <div class="data">{{humanizeDuration holdtime}}</div>
-        </div><div class="cell col3">
-        <div class="header">Ср.длит.разговора</div>
-        <div class="data">{{humanizeDuration talktime}}</div>
-      </div><div class="cell col3">
-        <div class="header {{longestholdtimeClass}}">Макс.ожидание сейчас</div>
-        <div class="data {{longestholdtimeClass}}">{{humanizeDuration longestholdtime}}</div>
-      </div>
+        {{> wb_block value=(humanizeDuration holdtime) visibleName="Ср.ожидание в очереди" cols=3}}
+        {{> wb_block value=(humanizeDuration talktime) visibleName="Ср.длит.разговора" cols=3}}
+        {{> wb_block value=(humanizeDuration longestholdtimeClass) visibleName="Макс.ожидание сейчас" cols=3}}
       </div>
       <!--
       <div class="row6">
@@ -49,28 +35,23 @@
       </div>
 -->
       <div class="row6">
-        <div class="cell col3">
-          <div class="header">Завершено</div>
-          <div class="data">{{completed}}</div>
-        </div><div class="cell col3">
-        <div class="header">Отменено</div>
-        <div class="data">{{abandoned}}</div>
-      </div><div class="cell col3">
-        <div class="header">Уровень сервиса</div>
-        <div class="data">{{servicelevelperf}}% / {{servicelevel}} с</div>
-      </div>
+        {{> wb_block value=completed visibleName="Завершено" cols=3 }}
+        {{> wb_block value=abandoned visibleName="Отменено" cols=3 }}
+        {{> wb_block value1=servicelevelperf value2="% / " value3=servicelevel value4="" visibleName="Уровень сервиса" cols=3 }}
       </div>
     {{/with}}
 
     <div class="row6">
-      <div class="cell col1">
-        <div class="data ">
-          Сегодня {{datetime}}
-        </div>
-      </div>
+      {{> wb_block value1="Сегодня " value2=datetime cols=1 }}
     </div>
 
   </div>
 </template>
 
+<template name="wb_block">
+  <div class="cell col{{cols}}">
+    <div class="header {{class}}">{{visibleName}}</div>
+    <div class="data {{class}}">{{value}}{{value0}}{{value1}}{{value2}}{{value3}}{{value4}}</div>
+  </div>
+</template>
 
