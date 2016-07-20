@@ -68,7 +68,15 @@
           <td>{{uniqueid}}</td>
 
           <td>{{userfield}}</td>
-          <td>{{recordingfile}}</td>
+          <td><a href="{{filelink}}">{{recordingfile}}</a></td>
+          <td>
+            {{#if recordingfile}}
+              <audio controls="controls" preload="none" name="{{recordingfile}}" style="height: 40px; width: 280px;">
+                <source src="{{filelink}}" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+            {{/if}}
+          </td>
         </tr>
       {{/each}}
       </tbody>
