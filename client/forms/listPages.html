@@ -1,51 +1,52 @@
 <template name="listPages">
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">Выберите подраздел</div>
-      <div class="panel-body">
-        <div class="table-responsive" style="position:relative; left:10%; width:85%; min-width:670px;">
+  <!--<div class="panel panel-default">-->
+  <div class="panel-heading">Выберите подраздел</div>
+  <!--<div class="panel-body">-->
+  <!--<div class="table-responsive" style="position:relative; left:10%; width:85%; min-width:670px;">-->
 
-          <ul class="nav nav-tabs">
-            <li role="presentation" class="{{pageClass 'deviceStatusList'}}"><a href="#" class="listPage" data-page="deviceStatusList">deviceStatusList</a></li>
-            <li role="presentation" class="{{pageClass 'extensionStatusList'}}"><a href="#" class="listPage" data-page="extensionStatusList">extensionStatusList</a></li>
-            <li role="presentation" class="{{pageClass 'peerStatusList'}}"><a href="#" class="listPage" data-page="peerStatusList">peerStatusList</a></li>
-            <li role="presentation" class="{{pageClass 'queueList'}}"><a href="#" class="listPage" data-page="queueList">queueList</a></li>
-            <li role="presentation" class="{{pageClass 'queueMemberStatusList'}}"><a href="#" class="listPage" data-page="queueMemberStatusList">queueMemberStatusList</a></li>
-            <li role="presentation" class="{{pageClass 'queueEntryList'}}"><a href="#" class="listPage" data-page="queueEntryList">queueEntryList</a></li>
-            <li role="presentation" class="{{pageClass 'channelList'}}"><a href="#" class="listPage" data-page="channelList">channelList</a></li>
-            <li role="presentation" class="{{pageClass 'bridgeList'}}"><a href="#" class="listPage" data-page="bridgeList">bridgeList</a></li>
-            <li role="presentation" class="{{pageClass 'bridgechannelList'}}"><a href="#" class="listPage" data-page="bridgechannelList">bridgechannelList</a></li>
-            <li role="presentation" class="{{pageClass 'channelVarList'}}"><a href="#" class="listPage" data-page="channelVarList">channelVarList</a></li>
-            <li role="presentation" class="{{pageClass 'cdrList'}}"><a href="#" class="listPage" data-page="cdrList">cdrList</a></li>
-          </ul>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="{{pageClass 'deviceStatusList'}}"><a href="#" class="listPage" data-page="deviceStatusList">deviceStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'extensionStatusList'}}"><a href="#" class="listPage" data-page="extensionStatusList">extensionStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'peerStatusList'}}"><a href="#" class="listPage" data-page="peerStatusList">peerStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'queueList'}}"><a href="#" class="listPage" data-page="queueList">queueList</a></li>
+    <li role="presentation" class="{{pageClass 'queueMemberStatusList'}}"><a href="#" class="listPage" data-page="queueMemberStatusList">queueMemberStatusList</a></li>
+    <li role="presentation" class="{{pageClass 'queueEntryList'}}"><a href="#" class="listPage" data-page="queueEntryList">queueEntryList</a></li>
+    <li role="presentation" class="{{pageClass 'channelList'}}"><a href="#" class="listPage" data-page="channelList">channelList</a></li>
+    <li role="presentation" class="{{pageClass 'bridgeList'}}"><a href="#" class="listPage" data-page="bridgeList">bridgeList</a></li>
+    <li role="presentation" class="{{pageClass 'bridgechannelList'}}"><a href="#" class="listPage" data-page="bridgechannelList">bridgechannelList</a></li>
+    <li role="presentation" class="{{pageClass 'channelVarList'}}"><a href="#" class="listPage" data-page="channelVarList">channelVarList</a></li>
+    <li role="presentation" class="{{pageClass 'cdrList'}}"><a href="#" class="listPage" data-page="cdrList">cdrList</a></li>
+  </ul>
 
-          {{#if activePage "deviceStatusList"}}
-            {{> deviceStatusList }}
-          {{else}} {{#if activePage "extensionStatusList"}}
-            {{> extensionStatusList }}
-          {{else}} {{#if activePage "peerStatusList"}}
-            {{> peerStatusList }}
-          {{else}} {{#if activePage "queueList"}}
-            {{> queueList }}
-          {{else}} {{#if activePage "queueMemberStatusList"}}
-            {{> queueMemberStatusList }}
-          {{else}} {{#if activePage "queueEntryList"}}
-            {{> queueEntryList }}
-          {{else}} {{#if activePage "channelList"}}
-            {{> channelList }}
-          {{else}} {{#if activePage "bridgeList"}}
-            {{> bridgeList }}
-          {{else}} {{#if activePage "bridgechannelList"}}
-            {{> bridgechannelList }}
-          {{else}} {{#if activePage "channelVarList"}}
-            {{> channelVarList }}
-          {{else}} {{#if activePage "cdrList"}}
-            {{> cdrList }}
-          {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}}
+  <div class="container-fluid">
+  <div class="table" style="position:relative; min-width:670px;">
+      {{#if activePage "deviceStatusList"}}
+        {{> deviceStatusList }}
+      {{else}} {{#if activePage "extensionStatusList"}}
+        {{> extensionStatusList }}
+      {{else}} {{#if activePage "peerStatusList"}}
+        {{> peerStatusList }}
+      {{else}} {{#if activePage "queueList"}}
+        {{> queueList }}
+      {{else}} {{#if activePage "queueMemberStatusList"}}
+        {{> queueMemberStatusList }}
+      {{else}} {{#if activePage "queueEntryList"}}
+        {{> queueEntryList }}
+      {{else}} {{#if activePage "channelList"}}
+        {{> channelList }}
+      {{else}} {{#if activePage "bridgeList"}}
+        {{> bridgeList }}
+      {{else}} {{#if activePage "bridgechannelList"}}
+        {{> bridgechannelList }}
+      {{else}} {{#if activePage "channelVarList"}}
+        {{> channelVarList }}
+      {{else}} {{#if activePage "cdrList"}}
+        {{> cdrList }}
+      {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}}
 
-        </div>
-      </div>
     </div>
+    <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 
