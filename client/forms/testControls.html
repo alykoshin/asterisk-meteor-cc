@@ -1,0 +1,154 @@
+<template name="testControls">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <form class="form-inline">
+        <div class="form-group">
+
+          <button type="button" class="btn btn-default wrtc-control" data-controlgroup="connect">
+            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+          </button>
+
+          <button type="button" class="btn btn-default wrtc-control" data-controlgroup="originate">
+            <span class="flaticon-fix flaticon-telephone-auricular-with-nine-circular-buttons" aria-hidden="true"></span>
+          </button>
+          {{#if showControl "originate"}}
+            <input type="text" class="form-control wrtc-input" id="editOriginate" data-controlgroup="originate" placeholder="Enter number to call">
+          {{/if}}
+
+        </div>
+      </form>
+
+      <hr>
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="editMember">Member</label>
+          <input type="text" class="form-control" id="editMember" value="test_agent">
+          <label class="sr-only" for="editPhone">Phone</label>
+          <input type="text" class="form-control" id="editPhone" value="2000">
+          <label class="sr-only" for="editPhone2">Phone2</label>
+          <input type="text" class="form-control" id="editPhone2" value="2002">
+          <label class="sr-only" for="editQueue">Queue</label>
+          <input type="text" class="form-control" id="editQueue" value="common">
+        </div>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group">
+
+          <div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-default" id="btnSubscribe" disabled="true">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Subscribe
+            </button>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="presencestate">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              PresenceState
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="sippeerstatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              SIPpeerstatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions-no" id="btnActionExtensionState" data-action="extensionstate">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              ExtensionState
+            </button>
+            <span>ExtensionState: <span class="label label-default" id="spanExtensionState" value="">Unknown</span></span>
+            <span>DeviceState: <span class="label label-default" id="spanDeviceState" value="">Unknown</span></span>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnActionCoreStatus" data-action="corestatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              CoreStatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queuestatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              QueueStatus
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queuememberstatus">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              QueueStatus(Member)
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="queues">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Queues
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="playdtmf">
+              <span class="glyphicon glyphicon glyphicon-music" aria-hidden="true"></span>
+              PlayDTMF
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" data-action="bridgelist">
+              <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span>
+              BridgeList
+            </button>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueAdd" data-action="queueadd">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+              QueueAdd
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueRemove" data-action="queueremove">
+              <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+              QueueRemove
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueuePause" data-action="queuepause">
+              <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+              QueuePause
+            </button>
+            <button type="button" class="btn btn-default wrtc-actions" id="btnQueueStatus" data-action="queuestatus">
+              <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+              QueueStatus
+            </button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <div class = "form-group">
+            <label for = "textareaSend">Text Area</label>
+
+          <textarea class = "form-control" rows = "7" id="textareaSend" style="width:300px;">
+{}
+          </textarea>
+          </div>
+          <div>
+            <div>
+              <button type="button" class="btn btn-default" id="btnPrevPage">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnNextPage">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnAddPage">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default" id="btnRemovePage">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              </button>
+            </div>
+            <button type="button" class="btn btn-default" id="btnSend">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+              Send
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+</template>
+
+

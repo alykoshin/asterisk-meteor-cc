@@ -4,7 +4,15 @@
 
 
 Router.route('/', function () {
+  this.render('index');
+});
+        
+Router.route('/main', function () {
   this.render('main');
+});
+        
+Router.route('/listPages', function () {
+  this.render('listPages');
 });
         
 
@@ -13,6 +21,10 @@ Router.route('/wallboard', function () {
 });
 
 Router.route('/wallboard/queue/:queue', function () {
-  this.render('_queueInfo', { data: { queueName: this.params.queue } });
+  this.render('_wbQueueInfo', { data: { queueName: this.params.queue } });
+});
+
+Router.route('/wallboard/queueList', function () {
+  this.render('_wbQueueList', { data: {} });
 });
 

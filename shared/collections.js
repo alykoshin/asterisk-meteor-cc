@@ -15,6 +15,7 @@ Channel           = new Mongo.Collection("channel");
 Bridge            = new Mongo.Collection("bridge");
 Bridgechannel     = new Mongo.Collection("bridgechannel");
 Channelvar        = new Mongo.Collection("channelvars");
+Cdr               = new Mongo.Collection("cdr");
 
 
 Meteor.cleanup = function() {

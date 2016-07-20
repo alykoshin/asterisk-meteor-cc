@@ -1,0 +1,55 @@
+<template name="wbQueueInfo">
+  <div class="wallboard panel rows6">
+
+    <div class="row5">
+      <div class="cell col1">
+        <div class="full main-header">
+          {{#if visibleName}}
+            {{visibleName}}
+          {{else}}
+            Очередь: {{queueName}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    {{#with _queue queueName}}
+      <div class="row5">
+        {{> wb_block object=this type="queue" name="loggedin" cols=3 }}{{> wb_block object=this type="queue" name="available" value=available cols=3 }}{{> wb_block object=this type="queue" name="callers" value=callers cols=3 }}
+      </div>
+      <div class="row6">
+        {{> wb_block object=this type="queue" name="holdtime" cols=3 }}{{> wb_block object=this type="queue" name="talktime" cols=3}}{{> wb_block object=this type="queue" name="longestholdtime" cols=3 }}
+      </div>
+      <!--
+      <div class="row6">
+        <div class="cell col2">
+          <div class="header">Max</div>
+          <div class="data">{{max}}</div>
+        </div><div class="cell col2">
+        <div class="header">Вызовов</div>
+        <div class="data">{{calls}}</div>
+      </div>
+      </div>
+-->
+      <div class="row5">
+        {{> wb_block object=this type="queue" name="completed" cols=3 }}{{> wb_block object=this type="queue" name="abandoned" cols=3 }}{{> wb_block object=this type="queue" name="sl" cols=3 }}
+      </div>
+    {{/with}}
+
+    <div class="row5">
+      {{> wb_block object=this type="system" name="now" prefix="Сегодня: " cols=1 }}
+    </div>
+
+  </div>
+</template>
+
+<template name="wb_block">
+  <div class="cell col{{cols}}">
+    {{#let title=(getTitle type name object) class=(getClass type name object) value=(getValue type name object) }}
+      {{#if title}}
+        <div class="header {{class}}">{{title}}</div>
+      {{/if}}
+      <div class="data {{class}}">{{prefix}}{{value}}{{postfix}}</div>
+    {{/let}}
+  </div>
+</template>
+

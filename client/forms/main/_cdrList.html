@@ -1,0 +1,79 @@
+<template name="cdrList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span>cdrList</span>
+      <!--<button type="button" class="btn btn-default" id="refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>-->
+    </div>
+    <table class="table table-hover table-striped">
+
+      <thead>
+      <tr>
+        <th>event</th>
+        <th>privilege</th>
+
+        <th>accountcode</th>
+
+        <th>source</th>
+        <th>destination</th>
+        <th>destinationcontext</th>
+        <th>callerid</th>
+        <th>channel</th>
+        <th>destinationchannel</th>
+
+        <th>lastapplication</th>
+        <th>lastdata</th>
+
+        <th>starttime</th>
+        <th>answertime</th>
+        <th>endtime</th>
+        <th>duration</th>
+        <th>billableseconds</th>
+
+        <th>disposition</th>
+        <th>amaflags</th>
+        <th>uniqueid</th>
+
+        <th>userfield</th>
+        <th>recordingfile</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each cdr}}
+        <tr class="cdrList">
+          <td>{{event}}</td>
+          <td>{{privilege}}</td>
+
+          <td>{{accountcode}}</td>
+
+          <td>{{source}}</td>
+          <td>{{destination}}</td>
+          <td>{{destinationcontext}}</td>
+          <td>{{callerid}}</td>
+          <td>{{channel}}</td>
+          <td>{{destinationchannel}}</td>
+
+          <td>{{lastapplication}}</td>
+          <td>{{lastdata}}</td>
+
+          <td>{{starttime}}</td>
+          <td>{{answertime}}</td>
+          <td>{{endtime}}</td>
+          <td>{{duration}}</td>
+          <td>{{billableseconds}}</td>
+
+          <td>{{disposition}}</td>
+          <td>{{amaflags}}</td>
+          <td>{{uniqueid}}</td>
+
+          <td>{{userfield}}</td>
+          <td>{{recordingfile}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+

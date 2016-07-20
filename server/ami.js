@@ -12,13 +12,14 @@ const util = require('util');
 const debug = require('debug')('ami');
 // const debug = console.log;
 // const debug_row = console.log;
-const debug_row = require('debug')('raw');
+const debug_raw = require('debug')('raw');
 const chalk = require('chalk');
 const AsteriskManager = require('asterisk-manager');
 
 const amiConfig = {
   // host: '172.20.200.1',
-  host: 'localhost',
+  host: '172.20.200.13',
+  // host: 'localhost',
   port: '5038',
 };
 
@@ -29,9 +30,17 @@ const credentials = {
     "username": "admin_user",
     "password": "mkefiei303"
   },
-  "ami": {
+  "__ami": {
     "username": "hello",
     "password": "kfd38ne98lfd"
+  },
+  "___ami": {
+    "username": "is_ucc_rzd",
+    "password": "lk47hv3ls"
+  },
+  "ami": {
+    "username": "asterisk_meteor_cc",
+    "password": "pk7gtk29d"
   }
 };
 
@@ -188,12 +197,12 @@ Meteor.startAMI = function() {
 
 
   ami.on('rawevent', function(evt) {
-    debug_row('<<< '+chalk.yellow('rawevent') + chalk.grey(': '+JSON.stringify(evt)));
+    debug_raw('<<< '+chalk.yellow('rawevent') + chalk.grey(': '+JSON.stringify(evt)));
   });
 
 
   ami.on('asterisk', function(evt) {
-    debug_row('<<< '+chalk.yellow('asterisk') + chalk.grey(': '+JSON.stringify(evt)));
+    debug_raw('<<< '+chalk.yellow('asterisk') + chalk.grey(': '+JSON.stringify(evt)));
   });
 
 
@@ -267,7 +276,7 @@ Meteor.startAMI = function() {
     delayedRefreshQueues();
   });
 
-   ami.wrappedOn('agentcomplete', function(evt) {
+  ami.wrappedOn('agentcomplete', function(evt) {
     Queuememberstatus.remove({ queue: evt.queue, stateinterface: evt.stateinterface });
     delayedRefreshQueues();
   });
@@ -368,36 +377,47 @@ Meteor.startAMI = function() {
   //
 
   ami.wrappedOn('agentconnect', function(evt) {
-    // Channel.upsert({ channel: evt.channel }, evt);
+    // we may update queue counter, but refresh all the data looks more reliable
     delayedRefreshQueues();
   });
 
   //
 
   ami.wrappedOn('bridgecreate', function(evt) {
-    Bridge.upsert({ bridgeuniqueid: evt.bridgeuniqueid }, evt);
+    // Bridge.upsert({ bridgeuniqueid: evt.bridgeuniqueid }, evt);
+    Bridge.insert(evt);
+    console.log('ami.wrappedOn(bridgecreate): Bridge.insert(): after');
   });
 
   ami.wrappedOn('bridgedestroy', function(evt) {
     Bridge.remove({ bridgeuniqueid: evt.bridgeuniqueid });
+    console.log('ami.wrappedOn(bridgedestroy)');
   });
 
   ami.wrappedOn('bridgeenter', function(evt) {
     Bridge.update(
-      { bridgeuniqueid:    evt.bridgeuniqueid }, //, uniqueid: evt.uniqueid },
-      { bridgenumchannels: evt.bridgenumchannels, }
+      { bridgeuniqueid:    evt.bridgeuniqueid },
+      { $set: { bridgenumchannels: evt.bridgenumchannels, } },
+      { upsert: false }
     );
+    console.log('ami.wrappedOn(bridgecreate): Bridge.update(): after');
     Bridgechannel.upsert({ bridgeuniqueid: evt.bridgeuniqueid, uniqueid: evt.uniqueid}, evt); //channel: evt.channel }, evt);//, uniqueid: evt.uniqueid },
   });
 
   ami.wrappedOn('bridgeleave', function(evt) {
     Bridge.update(
-      { bridgeuniqueid:    evt.bridgeuniqueid },//, uniqueid: evt.uniqueid },
-      { bridgenumchannels: evt.bridgenumchannels, }
+      { bridgeuniqueid:    evt.bridgeuniqueid },
+      { $set: { bridgenumchannels: evt.bridgenumchannels, } },
+      { upsert: false }
     );
+    console.log('ami.wrappedOn(bridgeleave)');
     Bridgechannel.remove({ bridgeuniqueid: evt.bridgeuniqueid, uniqueid: evt.uniqueid }); // channel: evt.channel });
   });
 
+
+  ami.wrappedOn('cdr', function(evt) {
+    Cdr.insert(evt);
+  });
 
 
   // ami.wrappedOn('confbridgejoin', function(evt) {

@@ -1,29 +1,22 @@
 
 <template name="wallboard">
-  <div class="panel panel-default">
-    <div class="panel-heading">Выберите очередь</div>
-    <div class="panel-body">
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Выберите очередь</div>
+      <div class="panel-body">
 
-      <div class="list-group">
-        {{#each _queue}}
-          <a href="/wallboard/queue/{{queue}}" class="list-group-item">{{queue}}
-            <span class="badge">{{available}}</span>
-            <span class="badge">{{calls}}</span>
-          </a>
-        {{/each}}
+        <div class="list-group">
+          {{#each _queue}}
+            <a href="/wallboard/queue/{{queue}}" class="list-group-item">{{queue}}
+              <span class="badge">{{available}}</span>
+              <span class="badge">{{calls}}</span>
+            </a>
+          {{/each}}
+        </div>
+
       </div>
-
-      <!--
-  {{#if queue}}
-    aaaaaaaaaaaaaaaaaaaaaaaaa
-    {{> queueInfo queueName=queue}}
-      {{else}}
-    bbbbbbbbbbbbbbbbbbbbbbbbb
-    {{> queueInfo queueName="common" visibleName="Общая очередь"}}
-      {{/if}}
--->
     </div>
-  </div>
+  </div> <!--<div class="container-fluid"> -->
 </template>
 
 

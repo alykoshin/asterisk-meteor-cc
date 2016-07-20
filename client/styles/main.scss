@@ -47,76 +47,146 @@ $cell-back-red: hsla(0deg, 67%, 69%, 0.5);
 $cell-hdr-back-red: darken($cell-back-red, 30%);
 $cell-brd-red: darken($cell-back-red, 30%);
 
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+
 .wallboard.panel {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
-  padding: 25px;
+  @media (max-width: $screen-xs-max)  {
+    padding: 6px;
+  }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    padding: 12px;
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    padding: 18px;
+  }
+  @media (min-width: $screen-lg-min) {
+    padding: 24px;
+  }
 
   .cell {
     height: 100%;
-    padding: 10px 32px;
+    @media (max-width: $screen-xs-max) {
+      padding: 2px 8px;
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      padding: 4px 16px;
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      padding: 8px 24px;
+    }
+    @media (min-width: $screen-lg-min) {
+      padding: 10px 32px;
+    }
   }
 
   .col {
     //position: relative;
     display: inline-block;
-
+    //@media (max-width: $screen-xs-max) {
+    //  //display: block;
+    //}
+    //@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    //  //display: block;
+    //}
+    //@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    //  display: inline-block;
+    //}
+    //@media (min-width: $screen-lg-min) {
+    //  display: inline-block;
+    //}
     #subcell {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
       width: 100%;
       text-align: center;
       border-radius: 3px;
       margin: 3px;
       //font-size: 42px;
-      font-size: 24px;
       border: 1px solid $cell-brd-blue;
-      &.green {
+      &.green, &.success {
         border: 1px solid $cell-brd-green;
       }
-      &.yellow {
+      &.yellow, &.warning {
         border: 1px solid $cell-brd-yellow;
       }
-      &.red {
+      &.red, &.danger {
         border: 1px solid $cell-brd-red;
       }
     }
     .header {
       @extend #subcell;
-      height: 33%;
+      //height: 33%;
       //font-size: 32px;
-      font-size: 24px;
+      @media (min-width: $screen-lg-min) {
+        font-size: 32px;
+      }
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        font-size: 24px;
+      }
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        font-size: 16px;
+      }
+      @media (max-width: $screen-xs-max) {
+        font-size: 8px;
+      }
       background-color: $cell-hdr-back-blue;
-      &.green {
+      &.green, &.success {
         background-color: $cell-hdr-back-green;
       }
-      &.yellow {
+      &.yellow, &.warning {
         background-color: $cell-hdr-back-yellow;
       }
-      &.red {
+      &.red, &.danger {
         background-color: $cell-hdr-back-red;
       }
     }
     .data {
       @extend #subcell;
-      height: 66%;
+      //height: 66%;
       //font-size: 56px;
-      font-size: 32px;
+      @media (max-width: $screen-xs-max) {
+        font-size: 24px;
+      }
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        font-size: 32px;
+      }
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        font-size: 44px;
+      }
+      @media (min-width: $screen-lg-min) {
+        font-size: 56px;
+      }
       background-color: $cell-back-blue;
-      &.green {
+      &.green, &.success {
         background-color: $cell-back-green;
       }
-      &.yellow {
+      &.yellow, &.warning {
         background-color: $cell-back-yellow;
       }
-      &.red {
+      &.red, &.danger {
         background-color: $cell-back-red;
       }
     }
+
     .full {
       @extend #subcell;
       height: 100%;
       background-color: $cell-hdr-back-blue;
+
+      white-space: normal;
+      overflow: visible;
+      text-overflow: ellipsis;
     }
     .main-header {
       font-size: 56px;
@@ -149,9 +219,39 @@ $cell-brd-red: darken($cell-back-red, 30%);
     }
   }
 
+  @media (max-width: 320px) {
+    [class*="col"] {
+      width: 100%;
+    }
+  }
+
+
+  //position: relative;
+  //@media (max-width: $screen-xs-max) {
+  //  display: block;
+  //  .col {
+  //    width: 100%;
+  //  }
+  //}
+  //@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  //  display: block;
+  //  .col {
+  //    width: 100%;
+  //  }
+  //}
+  //@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  //  display: inline-block;
+  //}
+  //@media (min-width: $screen-lg-min) {
+  //  display: inline-block;
+  //}
+
+
+
   //.row {
   //}
 
+  /*
   .row1 {
     //@extend .row;
     height: 100%;
@@ -181,4 +281,41 @@ $cell-brd-red: darken($cell-back-red, 30%);
     //@extend .row;
     height: 16%;
   }
+  */
+}
+
+
+
+
+.blue, .info {
+  background-color: $cell-hdr-back-blue;
+}
+.green, .success {
+  background-color: $cell-hdr-back-green;
+}
+.yellow, .warning {
+  background-color: $cell-hdr-back-yellow;
+}
+.red, .danger {
+  background-color: $cell-hdr-back-red;
+}
+
+.wbQueueList .row div {
+  //margin: 5px;
+  padding: 5px;
+  text-align: center;
+  font-size: 28px;
+  //border: 1px solid #d9d9d9;
+  //border-bottom: none;
+  vertical-align: middle;
+}
+
+.wbQueueList table th, .wbQueueList table td {
+  //margin: 5px;
+  padding: 5px;
+  text-align: center;
+  font-size: 28px;
+  //border: 5px solid white;
+  //border-bottom: none;
+  vertical-align: middle;
 }
