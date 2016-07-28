@@ -789,23 +789,23 @@ var onAMIReady = function() {
   ami.actionComplete({ 'action': 'ConfbridgeList' });
   ami.actionComplete({ 'action': 'ConfbridgeListRooms' });
 
-  ami.actionComplete({ 'action': 'FAXSessions' });
+  // ami.actionComplete({ 'action': 'FAXSessions' });
 
-  ami.actionComplete({ 'action': 'MeetmeList' });
-  ami.actionComplete({ 'action': 'MeetmeListRooms' });
+  // ami.actionComplete({ 'action': 'MeetmeList' });
+  // ami.actionComplete({ 'action': 'MeetmeListRooms' });
 
-  ami.actionComplete({ 'action': 'ParkedCalls' });
+  // ami.actionComplete({ 'action': 'ParkedCalls' });
 
-  ami.actionComplete({ 'action': 'PJSIPShowEndpoints' });
-  ami.actionComplete({ 'action': 'PJSIPShowResourceLists' });
+  // ami.actionComplete({ 'action': 'PJSIPShowEndpoints' });
+  // ami.actionComplete({ 'action': 'PJSIPShowResourceLists' });
 
   // ami.actionComplete({ 'action': 'Queues' });
   ami.actionComplete({ 'action': 'QueueStatus' });
   ami.actionComplete({ 'action': 'QueueSummary' });
 
-  ami.actionComplete({ 'action': 'SKINNYdevices' });
+  // ami.actionComplete({ 'action': 'SKINNYdevices' });
 
-  ami.actionComplete({ 'action': 'VoicemailUsersList' });
+  // ami.actionComplete({ 'action': 'VoicemailUsersList' });
 
   ami.actionComplete({ 'action': 'Status' });
 

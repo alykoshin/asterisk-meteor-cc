@@ -183,6 +183,10 @@ Template.wbQueueInfo.helpers({
     return Queue.findOne({ queue: name });
   },
 
+  _queueLabel(queueName) {
+    return QUEUE_LABELS[queueName];
+  },
+
   getClass: Meteor.helpers.getClass,
   getTitle: Meteor.helpers.getTitle,
   getValue: Meteor.helpers.getValue,

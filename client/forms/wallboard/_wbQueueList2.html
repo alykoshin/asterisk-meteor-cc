@@ -1,0 +1,29 @@
+<template name="wbQueueList2">
+  <div class="container wbQueueList">
+
+    <!-- header -->
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">queue</div>
+      <div class="col-xs-3 col-sm-2">{{getTitle 'queue' 'loggedin'}}</div>
+      <div class="col-xs-3 col-sm-2">{{getTitle 'queue' 'available'}}</div>
+      <div class="col-xs-3 col-sm-2">{{getTitle 'queue' 'callers'}}</div>
+      <div class="col-xs-3 col-sm-2">{{getTitle 'queue' 'longestholdtime'}}</div>
+      <div class="col-xs-3 col-sm-2">{{getTitle 'queue' 'sl'             }}</div>
+    </div>
+
+    <!-- table rows -->
+
+    {{#each _queues}}
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 blue">{{queue}}</div>
+        <div class="col-xs-3 col-sm-2 {{getClass 'queue' 'loggedin'        this}}">{{loggedin}}</div>
+        <div class="col-xs-3 col-sm-2 {{getClass 'queue' 'available'       this}}">{{available}}</div>
+        <div class="col-xs-3 col-sm-2 {{getClass 'queue' 'callers'         this}}">{{callers}}</div>
+        <div class="col-xs-3 col-sm-2 {{getClass 'queue' 'longestholdtime' this}}">{{longestholdtime}}</div>
+        <div class="col-xs-3 col-sm-2 {{getClass 'queue' 'sl'              this}}">{{getValue 'queue' 'sl' this}}</div>
+      </div>
+    {{/each}}
+
+  </div>
+</template>

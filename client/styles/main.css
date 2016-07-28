@@ -179,11 +179,12 @@ tr.queuememberstatus.paused {
   text-align: center;
   font-size: 28px;
   vertical-align: middle; }
-
 .wbQueueList table th, .wbQueueList table td {
   padding: 5px;
   text-align: center;
   font-size: 28px;
   vertical-align: middle; }
+.wbQueueList table tbody tr {
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

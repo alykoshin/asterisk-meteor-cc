@@ -24,8 +24,12 @@ Router.route('/wallboard/queue/:queue', function () {
   this.render('_wbQueueInfo', { data: { queueName: this.params.queue } });
 });
 
-Router.route('/wallboard/queueList', function () {
-  this.render('_wbQueueList', { data: {} });
+Router.route('/wallboard/queueList1', function () {
+  this.render('_wbQueueList1', { data: {} });
+});
+
+Router.route('/wallboard/queueList2', function () {
+  this.render('_wbQueueList2', { data: {} });
 });
 
 
