@@ -184,7 +184,7 @@ Template.wbQueueInfo.helpers({
   },
 
   _queueLabel(queueName) {
-    return QUEUE_LABELS[queueName];
+    return QUEUE_LABELS[queueName] || queueName;
   },
 
   getClass: Meteor.helpers.getClass,

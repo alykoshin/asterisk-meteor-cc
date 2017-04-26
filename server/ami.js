@@ -16,9 +16,13 @@ const debug_raw = require('debug')('raw');
 const chalk = require('chalk');
 const AsteriskManager = require('asterisk-manager');
 
+const keepConnected = true;
+const reconnectInterval = 1000;
+
 const amiConfig = {
   // host: '172.20.200.1',
-  host: '172.20.200.13',
+  //host: '172.20.200.13',
+  host: 'webcc.ru',
   // host: 'localhost',
   port: '5038',
 };
@@ -64,7 +68,7 @@ Meteor.startAMI = function() {
     true
   );
 
-  ami.keepConnected();
+  //ami.keepConnected();
 
 
   ami.__action = ami.action;
@@ -80,7 +84,7 @@ Meteor.startAMI = function() {
     ami._action(msg, function(err,res) {
 
       if (err) {
-        debug('<== '+chalk.green('action: '+msg.action)+': ' +
+        console.error('<== '+chalk.green('action: '+msg.action)+': ' +
           ' err:' + chalk.red(JSON.stringify(err)) + '');
         return callback(err);
       }
@@ -176,15 +180,22 @@ Meteor.startAMI = function() {
   });
 
   ami.on('connect', function() {
-    debug('<<< '+chalk.yellow('connect'));
+    //debug('<<< '+chalk.yellow('connect'));
+    console.log('<<< '+chalk.yellow('connect'));
   });
 
   ami.on('close', function(evt) {
-    debug('<<< '+chalk.yellow('close') + chalk.grey(': '+JSON.stringify(evt)));
+    console.error('<<< '+chalk.yellow('close') + chalk.grey(': '+JSON.stringify(evt)));
+    if (keepConnected) {
+      setInterval(() => {
+          ami.connect();
+        }, reconnectInterval
+      );
+    }
   });
 
   ami.on('end', function(evt) {
-    debug('<<< '+chalk.yellow('end') + chalk.grey(': '+JSON.stringify(evt)));
+    console.error('<<< '+chalk.yellow('end') + chalk.grey(': '+JSON.stringify(evt)));
   });
 
   ami.on('data', function(evt) {
@@ -192,7 +203,7 @@ Meteor.startAMI = function() {
   });
 
   ami.on('error', function(evt) {
-    debug('<<< '+chalk.red('error') + chalk.grey(': '+JSON.stringify(evt)));
+    console.error('<<< '+chalk.red('error') + chalk.grey(': '+JSON.stringify(evt)));
   });
 
 
@@ -632,14 +643,32 @@ Meteor.startAMI = function() {
     );
   });
 
+  //
+  // Looks like response to Queue action is not typical and is not handled by asterisk-manager package
+  //
   dispatcher.on('ws:queues', function(data, callback) {
     var msg = {
       action:    'Queues',
     };
+    console.log('dispatcher:, ws:queues: data: '+JSON.stringify(data));
     ami.action(msg, function(err, res) {
       callback(err, res);
     });
   });
+  /*
+   ami ==> action: {"action":"Queues"}
+   raw <<< rawevent: {"queue1 has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","no members":"","no callers":""}
+   raw <<< asterisk: {"queue1 has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","no members":"","no callers":""}
+   raw <<< rawevent: {"queue2 has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","no members":"","no callers":""}
+   raw <<< rawevent: {"common has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","members":"","test_agent (sip/2000 from sip/2000) (ringinuse enabled)\u001b[1;36;40m (dynamic)\u001b[0m\u001b[0m\u001b[0m\u001b[0m (\u001b[1;32;40minvalid\u001b[0m) has taken no calls yet":"","no callers":""}
+   raw <<< rawevent: {}
+   raw <<< rawevent: {}
+   raw <<< asterisk: {"queue2 has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","no members":"","no callers":""}
+   raw <<< asterisk: {"common has 0 calls (max unlimited) in 'ringall' strategy (0s holdtime, 0s talktime), w":"0, C:0, A:0, SL:0.0% within 0s","members":"","test_agent (sip/2000 from sip/2000) (ringinuse enabled)\u001b[1;36;40m (dynamic)\u001b[0m\u001b[0m\u001b[0m\u001b[0m (\u001b[1;32;40minvalid\u001b[0m) has taken no calls yet":"","no callers":""}
+   raw <<< asterisk: {}
+   raw <<< asterisk: {}
+   */
+
 
   /*
    Action: PlayDTMF
